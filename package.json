@@ -4,32 +4,42 @@
   "private": true,
   "devDependencies": {
     "babel-plugin-react-native-web": "^0.6.0",
-    "jest-expo": "26.0.0",
+    "canvas-prebuilt": "^1.6.5-prerelease.1",
+    "react-art": "^16.3.2",
     "react-native-scripts": "1.13.1",
-    "react-test-renderer": "16.3.0-alpha.1"
+    "react-test-renderer": "16.3.2"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "start": "react-app start",
+    "build": "react-app build",
+    "test": "react-app test --env=jsdom",
+    "eject": "react-app eject",
     "native-start": "react-native-scripts start",
     "native-eject": "react-native-scripts eject",
     "native-android": "react-native-scripts android",
-    "native-ios": "react-native-scripts ios",
-    "native-test": "jest"
-  },
-  "jest": {
-    "preset": "jest-expo"
+    "native-ios": "react-native-scripts ios"
   },
   "dependencies": {
     "expo": "^26.0.0",
+    "express": "^4.16.3",
     "react": "^16.3.2",
-    "react-art": "^16.3.2",
+    "react-app-tools": "^2.0.2",
     "react-dom": "^16.3.2",
-    "react-native": "0.54.0",
-    "react-native-web": "^0.6.0",
-    "react-scripts": "1.1.4"
+    "react-native": "0.55.3",
+    "react-native-web": "^0.6.0"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
   }
 }

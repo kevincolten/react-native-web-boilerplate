@@ -1,8 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import Expo from 'expo';
 import App from './components/App';
-import registerServiceWorker from './registerServiceWorker';
+import React, { Component } from 'react';
+import { View } from 'react-native';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+if (process.env.NODE_ENV === 'development') {
+  Expo.KeepAwake.activate();
+}
+
+Expo.registerRootComponent(App);
