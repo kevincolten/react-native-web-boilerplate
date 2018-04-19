@@ -3,10 +3,17 @@
 # expo
 .expo/
 
+# testing
+/coverage
+
 # dependencies
 /node_modules
 
+# production
+/build
+
 # misc
+.DS_Store
 .env.local
 .env.development.local
 .env.test.local
