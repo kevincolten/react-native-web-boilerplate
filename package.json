@@ -3,10 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "babel-plugin-react-native-web": "^0.6.0",
+    "@storybook/addon-actions": "^3.4.2",
+    "@storybook/addon-links": "^3.4.2",
+    "@storybook/addons": "^3.4.2",
+    "@storybook/react": "^3.4.2",
+    "@storybook/react-native": "^3.4.2",
+    "babel-core": "^6.26.0",
+    "babel-plugin-react-native-web": "^0.6.1",
+    "babel-runtime": "^6.26.0",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
+    "prop-types": "^15.6.1",
     "react-art": "^16.3.2",
-    "react-native-scripts": "1.13.1",
+    "react-native-scripts": "1.13.2",
     "react-test-renderer": "16.3.2"
   },
   "main": "src/index.js",
@@ -18,16 +26,23 @@
     "native-start": "react-native-scripts start",
     "native-eject": "react-native-scripts eject",
     "native-android": "react-native-scripts android",
-    "native-ios": "react-native-scripts ios"
+    "native-ios": "react-native-scripts ios",
+    "postinstall": "[ -h ./node_modules/build ] || ln -sf ../build ./node_modules/build",
+    "native-storybook": "storybook start -p 7007",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "expo": "^26.0.0",
     "express": "^4.16.3",
     "react": "^16.3.2",
     "react-app-tools": "^2.0.2",
     "react-dom": "^16.3.2",
     "react-native": "0.55.3",
-    "react-native-web": "^0.6.0"
+    "react-native-web": "^0.6.1",
+    "react-navigation": "^1.5.11",
+    "react-router-dom": "^4.2.2"
   },
   "browserslist": {
     "development": [

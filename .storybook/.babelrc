@@ -1,0 +1,4 @@
+{
+  "plugins": ["react-native-web"],
+  "presets": ["env", "react"]
+}

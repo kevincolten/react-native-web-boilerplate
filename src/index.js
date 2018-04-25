@@ -1,5 +1,5 @@
 import Expo from 'expo';
-import App from './components/App';
+import App from './containers/App';
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
