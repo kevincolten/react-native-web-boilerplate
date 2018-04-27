@@ -30,7 +30,7 @@ app.get('*', (req, res, next) => {
         <head>${renderToString(getStyleElement())}</head>
         <body>
           <div id="root">${markup}</div>
-          ${assets.main.map(src => `<script src="${src}" defer></script>`)}
+          ${assets.main.filter(src => !src.includes('.map')).map(src => `<script src="/${src}" defer></script>`)}
           <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
         </body>
       </html>
