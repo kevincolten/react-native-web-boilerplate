@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import styles from './styles';
 import routes from '../../routes';
 import { Route, Switch } from 'react-router-dom';
-import Navbar from '../NavBar';
+import Navbar from '../../components/NavBar/index.web';
 
 export default class App extends Component {
   render() {

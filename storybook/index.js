@@ -4,13 +4,9 @@ import { getStorybookUI, configure } from '@storybook/react-native';
 
 // import stories
 
-const req = require.context('./', true, /\.[ios|android]\.js$/)
-function loadStories() {
-  req.keys().forEach((filename) => req(filename))
-}
-configure(() => {
-  require('./stories');
-}, module);
+const req = require.context('./', true, /story\.[ios|android]\.js$/)
+const loadStories = () => req.keys().forEach((filename) => req(filename));
+configure(loadStories, module);
 
 // This assumes that storybook is running on the same host as your RN packager,
 // to set manually use, e.g. host: 'localhost' option

@@ -1,5 +1,5 @@
 import React from 'react';
-import Komponent from './index.web';
+import Komponent from './index.web.js';
 
 import renderer from 'react-test-renderer';
 

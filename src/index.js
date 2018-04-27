@@ -1,7 +1,5 @@
 import Expo from 'expo';
-import App from './containers/App';
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import App from './containers/App/index.native';
 
 if (process.env.NODE_ENV === 'development') {
   Expo.KeepAwake.activate();
