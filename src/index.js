@@ -1,8 +1,7 @@
-import Expo from 'expo';
-import App from './containers/App/index.native';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './containers/App/index.web.js';
+import registerServiceWorker from './registerServiceWorker';
 
-if (process.env.NODE_ENV === 'development') {
-  Expo.KeepAwake.activate();
-}
-
-Expo.registerRootComponent(App);
+ReactDOM.render(<App />, document.querySelector('#root'));
+registerServiceWorker();

@@ -1,19 +1,91 @@
 const path = require('path');
 
 module.exports = {
-  babel(config, { target }) {
+  // The Webpack config to use when compiling your react app for development or production.
+  webpack: function (config, env) {
+    // ...add your webpack config customisation, rewires, etc...
+    // Example: add less support to your app.
+    // const rewireLess = require('react-app-rewire-less');
+    // config = rewireLess(config, env);
     return {
       ...config,
-      plugins: config.plugins.concat(
-        require.resolve('babel-plugin-react-native-web'),
-      ),
-      // exclude: /node_modules\/(?![react\-native\-safe\-area\-view])/
-      // include: ["node_modules/react-native-safe-area-view"]
+      module: {
+        ...config.module,
+        rules: [
+          ...config.module.rules,
+          {
+            test: /\.(js|jsx|mjs)$/,
+            include: [
+              './src',
+              path.resolve('node_modules', "native-base-shoutem-theme"),
+              path.resolve('node_modules', "react-navigation"),
+              path.resolve('node_modules', "react-native-easy-grid"),
+              path.resolve('node_modules', "react-native-drawer"),
+              path.resolve('node_modules', "react-native-safe-area-view"),
+              path.resolve('node_modules', "react-native-vector-icons"),
+              path.resolve(
+                'node_modules',
+                "react-native-keyboard-aware-scroll-view"
+              ),
+              path.resolve('node_modules', "react-native-web"),
+              path.resolve('node_modules', "react-native-tab-view"),
+              path.resolve('node_modules', "static-container")
+            ],
+            loader: require.resolve("babel-loader"),
+            options: {
+              cacheDirectory: true
+            }
+          },
+        ]
+      },
+      resolve: {
+        alias: {
+          "react-native/Libraries/Renderer/shims/ReactNativePropRegistry": "react-native-web/dist/modules/ReactNativePropRegistry",
+          "react-native": "react-native-web"
+        },
+      }
     };
   },
-  webpack(config, { target }) {
-    return { 
-      ...config
-    };
+  // The Jest config to use when running your jest tests - note that the normal rewires do not
+  // work here.
+  jest: function (config) {
+    // ...add your jest config customisation...
+    // Example: enable/disable some tests based on environment variables in the .env file.
+    // if (!config.testPathIgnorePatterns) {
+    //   config.testPathIgnorePatterns = [];
+    // }
+    // if (!process.env.RUN_COMPONENT_TESTS) {
+    //   config.testPathIgnorePatterns.push('<rootDir>/src/components/**/*.test.js');
+    // }
+    // if (!process.env.RUN_REDUCER_TESTS) {
+    //   config.testPathIgnorePatterns.push('<rootDir>/src/reducers/**/*.test.js');
+    // }
+    return config;
+  },
+  // The function to use to create a webpack dev server configuration when running the development
+  // server with 'npm run start' or 'yarn start'.
+  // Example: set the dev server to use a specific certificate in https.
+  devServer: function (configFunction) {
+    // Return the replacement function for create-react-app to use to generate the Webpack
+    // Development Server config. "configFunction" is the function that would normally have
+    // been used to generate the Webpack Development server config - you can use it to create
+    // a starting configuration to then modify instead of having to create a config from scratch.
+    return function (proxy, allowedHost) {
+      // Create the default config by calling configFunction with the proxy/allowedHost parameters
+      const config = configFunction(proxy, allowedHost);
+
+      // Change the https certificate options to match your certificate, using the .env file to
+      // set the file paths & passphrase.
+      // const fs = require('fs');
+      // config.https = {
+      //   key: fs.readFileSync(process.env.REACT_HTTPS_KEY, 'utf8'),
+      //   cert: fs.readFileSync(process.env.REACT_HTTPS_CERT, 'utf8'),
+      //   ca: fs.readFileSync(process.env.REACT_HTTPS_CA, 'utf8'),
+      //   passphrase: process.env.REACT_HTTPS_PASS
+      // };
+
+      // Return your customised Webpack Development Server config.
+      return config;
+    }
   }
-};
+}

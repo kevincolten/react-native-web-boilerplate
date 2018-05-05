@@ -17,36 +17,39 @@
     "react-native-scripts": "1.13.2",
     "react-test-renderer": "16.3.2"
   },
-  "main": "src/index.js",
+  "main": "src/index.native.js",
   "scripts": {
-    "start": "react-app start",
-    "build": "react-app build",
-    "test": "react-app test --env=jsdom",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app eject",
     "native-start": "watchman watch-del-all && react-native-scripts start --reset-cache",
     "native-eject": "react-native-scripts eject",
     "native-android": "react-native-scripts android",
     "native-ios": "react-native-scripts ios",
-    "postinstall": "[ -h ./node_modules/build ] || ln -sf ../build ./node_modules/build",
     "native-storybook": "storybook start -p 7007",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
+    "@expo/vector-icons": "^6.3.1",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "expo": "^27.0.1",
     "express": "^4.16.3",
+    "native-base": "^2.4.3",
+    "nodemon": "^1.17.3",
     "passport": "^0.4.0",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "react": "^16.3.2",
-    "react-app-tools": "^2.0.3",
+    "react-app-rewired": "^1.5.2",
     "react-dom": "^16.3.2",
     "react-native": "0.55.3",
     "react-native-web": "^0.6.1",
     "react-navigation": "^1.5.11",
     "react-router-dom": "^4.2.2",
     "react-router-native": "^4.2.0",
+    "react-scripts": "^1.1.4",
     "sequelize": "^5.0.0-beta.3",
     "sequelize-cli": "^4.0.0"
   },
@@ -62,5 +65,6 @@
       "Firefox ESR",
       "not ie < 11"
     ]
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
